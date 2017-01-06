@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -36,6 +37,23 @@ android:textSize="30dp"
 </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <!-- Layout for content is here. This can be a RelativeLayout  -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="  Search.."/>
 
+    <!-- Layout for content is here. This can be a RelativeLayout  -->
+    <RelativeLayout
+        android:id="@+id/viewsavedfavs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      >
+
+        <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:text="View Favourite Stocks"/>
+    </RelativeLayout>
 </LinearLayout>
