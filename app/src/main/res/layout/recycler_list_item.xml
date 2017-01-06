@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@color/md_deep_purple_100"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_horizontal_margin"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+
+        android:id="@+id/sharename"
+        android:layout_weight="1"
+        android:textSize="25dp"
+
+        android:layout_width ="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alkem Labs" />
+    <ImageButton
+
+        android:background="@color/md_deep_purple_100"
+        android:id="@+id/favbutton"
+        android:layout_weight="1"
+        android:src="@drawable/ic_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
+
+
+
+
