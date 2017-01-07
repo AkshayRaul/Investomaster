@@ -32,8 +32,8 @@ public class DisplayStock extends AppCompatActivity{
 
     }
     private class GetStock extends AsyncTask<Void, Void, Void> {
-        String high,low,open,description,date;
-        TextView datetext,opentext,hightext,lowtext,descriptiontext;
+        String high,low,open,description,date,close;
+        TextView datetext,opentext,hightext,lowtext,descriptiontext,closetext;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -56,12 +56,16 @@ public class DisplayStock extends AppCompatActivity{
                     JSONArray jsonArray=jsonObj.getJSONObject("dataset").getJSONArray("data");
 
                     date=jsonArray.getJSONArray(0).get(0).toString();
+                    open=jsonArray.getJSONArray(0).get(1).toString();
+                    high=jsonArray.getJSONArray(0).get(2).toString();
+                    low=jsonArray.getJSONArray(0).get(3).toString();
+                    close=jsonArray.getJSONArray(0).get(4).toString();
                     Log.d("Array",""+jsonArray.getJSONArray(0).get(0));
-                     open=jsonArray.getJSONArray(0).get(1).toString();
-                     description=jsonObj.getJSONObject("dataset").getJSONObject("description").toString();
+                    Log.d("Array",""+jsonArray.getJSONArray(0).get(1));
+                    Log.d("Array",""+jsonArray.getJSONArray(0).get(2));
+                    Log.d("Array",""+jsonArray.getJSONArray(0).get(3));
 
-                     high=jsonArray.getJSONArray(0).get(2).toString();
-                     low=jsonArray.getJSONArray(0).get(3).toString();
+
 
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -87,8 +91,9 @@ public class DisplayStock extends AppCompatActivity{
             hightext.setText(high);
             lowtext=(TextView) findViewById(R.id.lowinfo);
             lowtext.setText(low);
-            descriptiontext=(TextView)findViewById(R.id.descriptioninfo);
-            descriptiontext.setText(description);
+            closetext=(TextView) findViewById(R.id.close);
+            closetext.setText(close);
+
         }
     }
 

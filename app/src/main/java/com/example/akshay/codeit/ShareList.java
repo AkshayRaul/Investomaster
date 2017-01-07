@@ -81,6 +81,7 @@ public class ShareList extends Fragment {
                         // TODO Handle item click
                         Log.d("Pos",position+"");
                         //pass this intent to displaystock class
+
                         Intent showStock=new Intent(getContext(),DisplayStock.class);
                         showStock.putExtra("quote",arrayList.get(position).category);
                         startActivity(showStock);
@@ -92,7 +93,7 @@ public class ShareList extends Fragment {
         return rootView;
     }
 
-        private class GetStocks extends AsyncTask<Void, Void, Void> {
+         class GetStocks extends AsyncTask<Void, Void, Void> {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
@@ -104,7 +105,7 @@ public class ShareList extends Fragment {
             protected Void doInBackground(Void... arg0) {
                 HttpHandler sh = new HttpHandler();
                 // Making a request to url and getting response
-                String url = "https://www.quandl.com/api/v3/datasets.json?query=&database_code=NSE&page=1";
+                String url = "https://www.quandl.com/api/v3/datasets.json?query=&database_code=NSE&per_page=100&page=1&api_key=phLfQVsTFqUqdXQxJxSu";
                 String jsonStr = sh.makeServiceCall(url);
 
                 Log.e(TAG, "Response from url: " + jsonStr);
