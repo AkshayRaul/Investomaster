@@ -30,18 +30,15 @@ public class ShareList extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_share_list, container, false);
-        // ButterKnife.bind(this, rootView);
         recyclerView=(RecyclerView)rootView.findViewById(R.id.recyclerView);
-        //  String[] categories = getArguments().getStringArray("categories");
-        //int[] imageIcons = getArguments().getIntArray("imageIcons");
-        // int id = getArguments().getInt("id");
+
         String[] categories = getResources().getStringArray(R.array.sharelist);
         int[] imageIcons = {R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite};
 
         arrayList = new ArrayList<>();
 
         for (int i = 0; i < categories.length; i++) {
-            arrayList.add(new ListObject(categories[i], imageIcons[i]));
+            arrayList.add(new ListObject(categories[i],imageIcons[i]));
 
         }
 

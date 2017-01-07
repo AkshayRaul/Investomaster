@@ -15,11 +15,12 @@
         android:layout_height="wrap_content"
         android:text="Alkem Labs" />
     <ImageButton
-
-        android:background="@color/md_deep_purple_100"
+android:background="@color/md_deep_purple_100"
+ android:gravity="right"
         android:id="@+id/favbutton"
         android:layout_weight="1"
-        android:src="@drawable/ic_favorite"
+        android:clickable="true"
+        android:onClick="favbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
