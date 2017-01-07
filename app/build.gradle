@@ -24,7 +24,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
+    compile 'org.apache.httpcomponents:httpcore:4.4.1'
 
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
+    android {
+        useLibrary 'org.apache.http.legacy'
+    }
 }
