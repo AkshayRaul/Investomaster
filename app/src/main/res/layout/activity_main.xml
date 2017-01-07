@@ -77,13 +77,23 @@
 
         />
 
-    <ListView
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+android:id="@+id/viewfavs"
+
+    android:layout_height="wrap_content">
+    <Button
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listView" />
+        android:text="View Favourites"
+        android:textAlignment="center"
 
-
-
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>
     <!-- Layout for content is here. This can be a RelativeLayout  -->
 
 </LinearLayout>

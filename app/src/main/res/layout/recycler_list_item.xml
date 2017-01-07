@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/md_black_1000"
+<LinearLayout android:background="@color/md_grey_100"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/activity_horizontal_margin"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
-
+        android:textColor="@color/md_black_1000"
         android:id="@+id/sharename"
         android:layout_weight="9"
         android:textSize="20dp"
@@ -17,10 +17,10 @@
         />
     <ImageButton
 
+
         android:id="@+id/favbutton"
         android:layout_weight="1"
-        android:clickable="true"
-        android:onClick="favbutton"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

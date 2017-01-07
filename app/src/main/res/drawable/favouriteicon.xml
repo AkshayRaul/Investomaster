@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
+        <!-- pressed -->
         <item
-            android:state_focused="true"
             android:state_pressed="true"
-            android:drawable="@drawable/ic_favorite_border" />
 
+            android:drawable="@drawable/ic_favorite"
+            />
+
+        <!-- focused -->
+
+
+        <!-- default -->
         <item
-            android:state_focused="false"
-            android:state_pressed="true"
-            android:drawable="@drawable/ic_favorite_border" />
-
-        <item android:drawable="@drawable/ic_fav" />
+            android:tint="@color/md_white_1000"
+            android:drawable="@drawable/ic_favorite_border"
+            />
 
 </selector>

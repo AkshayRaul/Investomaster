@@ -14,7 +14,9 @@ public class ListObject {
 
         this.image = image;
     }
-
+   public String getCategory(){
+       return category;
+   }
 
     public int getId() {
         return id;

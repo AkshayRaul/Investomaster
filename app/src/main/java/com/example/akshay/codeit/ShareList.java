@@ -1,45 +1,28 @@
 package com.example.akshay.codeit;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
+import butterknife.Bind;
 
 
 public class ShareList extends Fragment {
@@ -51,15 +34,16 @@ public class ShareList extends Fragment {
     LinearLayoutManager linearLayoutManager;
     ShareListRecyclerAdapter sharelistRecyclerAdapter;
     RecyclerView recyclerView;
+ImageButton imageButton;
 
 
 
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_share_list, container, false);
         recyclerView=(RecyclerView)rootView.findViewById(R.id.recyclerView);
+
 
         String[] categories = getResources().getStringArray(R.array.sharelist);
         int[] imageIcons = {R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite};
@@ -75,6 +59,8 @@ public class ShareList extends Fragment {
         sharelistRecyclerAdapter = new ShareListRecyclerAdapter(getContext(), arrayList);
         recyclerView.setAdapter(sharelistRecyclerAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
@@ -124,7 +110,7 @@ public class ShareList extends Fragment {
                             String datasetcode = c.getString("dataset_code");
                                                         // adding stock to stock list
                             //listview here
-                            arrayList.add(new ListObject(datasetcode,R.drawable.ic_favorite));
+                            arrayList.add(new ListObject(datasetcode,R.drawable.favouriteicon));
                         }
                     } catch (final JSONException e) {
                         Log.e(TAG, "Json parsing error: " + e.getMessage());
