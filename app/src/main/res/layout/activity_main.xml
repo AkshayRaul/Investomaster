@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="Share Name"
             android:textSize="25dp"
-            android:layout_weight="1"
+            android:layout_weight="9"
             />
 
         <TextView

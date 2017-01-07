@@ -11,6 +11,6 @@
             android:state_pressed="true"
             android:drawable="@drawable/ic_favorite_border" />
 
-        <item android:drawable="@drawable/ic_favorite" />
+        <item android:drawable="@drawable/ic_fav" />
 
 </selector>

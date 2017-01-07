@@ -1,4 +1,5 @@
 package com.example.akshay.codeit;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
 }

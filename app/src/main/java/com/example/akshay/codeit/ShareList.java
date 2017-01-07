@@ -67,7 +67,7 @@ public class ShareList extends Fragment {
         arrayList = new ArrayList<ListObject>();
 
         for (int i = 0; i < categories.length; i++) {
-//            arrayList.add(new ListObject(categories[i],imageIcons[i]));
+            //         arrayList.add(new ListObject(categories[i],imageIcons[i]));
 
         }
 
