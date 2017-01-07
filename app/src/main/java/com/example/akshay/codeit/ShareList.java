@@ -80,7 +80,8 @@ public class ShareList extends Fragment {
                     @Override public void onItemClick(View view, int position) {
                         // TODO Handle item click
                         Log.d("Pos",position+"");
-                        Intent showStock=new Intent();
+                        //pass this intent to displaystock class
+                        Intent showStock=new Intent(getContext(),DisplayStock.class);
                         showStock.putExtra("quote",arrayList.get(position).category);
                         startActivity(showStock);
 

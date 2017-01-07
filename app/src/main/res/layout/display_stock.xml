@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent">
+
+
+    <TableLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/nameofshare"
+                android:text="Share Name:"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/sharenameinfo"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </TableRow>
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/description"
+                android:text="Description:"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/descriptioninfo"
+                android:textSize="10dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/date"
+                android:text="Date:"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/dateinfo"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </TableRow>
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/open"
+                android:text="Open:"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/openinfo"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </TableRow>
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/high"
+                android:text="High:"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/highinfo"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </TableRow>
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/low"
+                android:text="Low:"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/lowinfo"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                android:gravity="center"/>
+
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>

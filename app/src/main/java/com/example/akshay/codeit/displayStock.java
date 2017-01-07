@@ -5,26 +5,35 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
+
 /**
  * Created by akshay on 7/1/17.
  */
-public class displayStock extends AppCompatActivity{
-
+public class DisplayStock extends AppCompatActivity{
     String TAG="Stock";
     String stock;
     @Override
     public void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
+
+        setContentView(R.layout.display_stock);
+        TextView textView=(TextView)findViewById(R.id.sharenameinfo) ;
+
         stock= getIntent().getExtras().getString("quote");
+        textView.setText(stock.toString());
         new GetStock().execute();
 
     }
     private class GetStock extends AsyncTask<Void, Void, Void> {
+        String high,low,open,description,date;
+        TextView datetext,opentext,hightext,lowtext,descriptiontext;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -36,19 +45,23 @@ public class displayStock extends AppCompatActivity{
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
             // Making a request to url and getting response
+            Log.d("stock",stock);
             String url = "https://www.quandl.com/api/v3/datasets/NSE/"+stock.trim()+".json?api_key=phLfQVsTFqUqdXQxJxSu";
             String jsonStr = sh.makeServiceCall(url);
-
+            //this is npt working
             Log.d("Stock response", "Response from url: " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
+                    JSONArray jsonArray=jsonObj.getJSONObject("dataset").getJSONArray("data");
 
-                    // Getting JSON Array node
-                    JSONArray stocks = jsonObj.getJSONArray("datasets");
+                    date=jsonArray.getJSONArray(0).get(0).toString();
+                    Log.d("Array",""+jsonArray.getJSONArray(0).get(0));
+                     open=jsonArray.getJSONArray(0).get(1).toString();
+                     description=jsonObj.getJSONObject("dataset").getJSONObject("description").toString();
 
-                    // looping through All stocks
-
+                     high=jsonArray.getJSONArray(0).get(2).toString();
+                     low=jsonArray.getJSONArray(0).get(3).toString();
 
                 } catch (final JSONException e) {
                     Log.e(TAG, "Json parsing error: " + e.getMessage());
@@ -66,7 +79,16 @@ public class displayStock extends AppCompatActivity{
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-
+            datetext=(TextView) findViewById(R.id.dateinfo);
+            datetext.setText(date);
+            opentext=(TextView) findViewById(R.id.openinfo);
+            opentext.setText(open);
+            hightext=(TextView) findViewById(R.id.highinfo);
+            hightext.setText(high);
+            lowtext=(TextView) findViewById(R.id.lowinfo);
+            lowtext.setText(low);
+            descriptiontext=(TextView)findViewById(R.id.descriptioninfo);
+            descriptiontext.setText(description);
         }
     }
 
