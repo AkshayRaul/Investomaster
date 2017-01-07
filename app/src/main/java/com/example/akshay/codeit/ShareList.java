@@ -75,6 +75,7 @@ ImageButton imageButton;
                     }
                 })
         );
+
         new GetStocks().execute();
         return rootView;
     }

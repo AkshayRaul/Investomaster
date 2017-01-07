@@ -77,23 +77,15 @@
 
         />
 
-
-
-
-<RelativeLayout
-    android:layout_width="match_parent"
-android:id="@+id/viewfavs"
-
-    android:layout_height="wrap_content">
-    <Button
-
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Favourites"
-        android:textAlignment="center"
+        android:layout_height="wrap_content">
 
-        android:layout_alignParentBottom="true"/>
-</RelativeLayout>
-    <!-- Layout for content is here. This can be a RelativeLayout  -->
-
+        <Button
+            android:id="@+id/viewsavedfavs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="View Favourite Stocks"/>
+    </RelativeLayout>
 </LinearLayout>
