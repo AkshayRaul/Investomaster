@@ -38,11 +38,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class ShareList extends Fragment {
 
+    String TAG="Bla";
     View rootView;
     ArrayList<ListObject> arrayList;
     public ShareList(){}
@@ -77,27 +79,118 @@ public class ShareList extends Fragment {
         return rootView;
     }
 
-    class GetStocks extends AsyncTask<Void, Void, Void> {
+        private class GetStocks extends AsyncTask<Void, Void, Void> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+               // Toast.makeText(ShareList.this,"Json Data",Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            protected Void doInBackground(Void... arg0) {
+                HttpHandler sh = new HttpHandler();
+                // Making a request to url and getting response
+                String url = "https://www.quandl.com/api/v3/datasets.json?query=&database_code=NSE&page=1";
+                String jsonStr = sh.makeServiceCall(url);
+
+                Log.e(TAG, "Response from url: " + jsonStr);
+                if (jsonStr != null) {
+                    try {
+                        JSONObject jsonObj = new JSONObject(jsonStr);
+
+                        // Getting JSON Array node
+                        JSONArray stocks = jsonObj.getJSONArray("datasets");
+
+                        // looping through All stocks
+                        for (int i = 0; i < stocks.length(); i++) {
+                            JSONObject c = stocks.getJSONObject(i);
+
+                            String name = c.getString("name");
+                            String datasetcode = c.getString("dataset_code");
+                                      // tmp hash map for single stock
+                                                        // adding stock to stock list
+                            //listview here
+                            arrayList.add(new ListObject(name
+                            ,R.drawable.ic_favorite));
+                        }
+                    } catch (final JSONException e) {
+                        Log.e(TAG, "Json parsing error: " + e.getMessage());
 
 
-        GetStocks()
-        {
+                    }
 
+                } else {
+                    Log.e(TAG, "Couldn't get json from server.");
+                                    }
 
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void result) {
+                super.onPostExecute(result);
+
+            }
         }
-        @Override
+        }
+
+
+
+
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         protected Void doInBackground(Void... voids) {
             HttpClient httpclient = new DefaultHttpClient();
             HttpGet httpget = new HttpGet("https://www.quandl.com/api/v3/datasets.json?query=hdfc&database_code=NSE&page=1");
-
+            JSONObject jsonObject= new JSONObject(httpget);
             try {
 
-                JSONObject jsonobj = new JSONObject();
-               // jsonobj.put("datasets",name);
+                JSONArray jsonArray= new JSONArray();
+               for(int i=0;i<jsonArray.length();i++){
+                   String array=jsonArray.getJSONArray(i).getString(i);
+                   Log.d("dataset",httpget.toString());
 
-              Log.d("dataset",httpget.toString());
+               }
+
 
 
                 //  arrayList.add(new ListObject("input", jsonobj.toString()));
@@ -199,3 +292,4 @@ public class ShareList extends Fragment {
 
 
 }
+*/
