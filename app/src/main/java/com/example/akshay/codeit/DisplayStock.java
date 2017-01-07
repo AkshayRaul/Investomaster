@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -25,9 +26,12 @@ public class DisplayStock extends AppCompatActivity{
 
         setContentView(R.layout.display_stock);
         TextView textView=(TextView)findViewById(R.id.sharenameinfo) ;
+        Toolbar toolbar = (Toolbar) findViewById(R.id.Stocktoolbar);
+        setSupportActionBar(toolbar);
 
         stock= getIntent().getExtras().getString("quote");
         textView.setText(stock.toString());
+        toolbar.setTitle(stock.toString());
         new GetStock().execute();
 
     }
