@@ -111,7 +111,7 @@ public class ShareList extends Fragment {
                                       // tmp hash map for single stock
                                                         // adding stock to stock list
                             //listview here
-                            arrayList.add(new ListObject(name
+                            arrayList.add(new ListObject(datasetcode
                             ,R.drawable.ic_favorite));
                         }
                     } catch (final JSONException e) {
