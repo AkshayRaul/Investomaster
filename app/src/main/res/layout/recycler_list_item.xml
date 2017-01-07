@@ -14,9 +14,9 @@
         android:layout_height="wrap_content"
         android:text="Alkem Labs"
         android:clickable="true"
-        android:onClick="myStock"/>
+        />
     <ImageButton
-        android:paddingRight="15dp"
+
         android:id="@+id/favbutton"
         android:layout_weight="1"
         android:clickable="true"

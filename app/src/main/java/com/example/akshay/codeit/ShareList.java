@@ -75,6 +75,14 @@ public class ShareList extends Fragment {
         sharelistRecyclerAdapter = new ShareListRecyclerAdapter(getContext(), arrayList);
         recyclerView.setAdapter(sharelistRecyclerAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // TODO Handle item click
+                        Log.d("Pos",position+"");
+                    }
+                })
+        );
         new GetStocks().execute();
         return rootView;
     }
