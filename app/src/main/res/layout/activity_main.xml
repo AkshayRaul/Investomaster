@@ -8,20 +8,19 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:background="@color/colorPrimaryDark">
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+        <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <TextView
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Investomaster"
-android:textSize="30dp"
+            android:textSize="30dp"
             android:textColor="@android:color/white"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_alignParentLeft="true"
@@ -32,22 +31,34 @@ android:textSize="30dp"
             android:layout_width="wrap_content"
             android:src="@drawable/ic_refresh"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" />
+        <ImageView
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_refresh"
+            android:layout_height="wrap_content"
            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true" />
 </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <EditText
+   <!-- <EditText
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="  Search.."/>
+        android:hint="  Search.."/>-->
+    <SearchView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/search" />
     <LinearLayout
         android:id="@+id/labels"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:background="@color/md_deep_purple_A100"
+            android:background="@color/md_black_1000"
             android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,12 +67,10 @@ android:textSize="30dp"
             android:layout_weight="1"
             />
 
-
-
         <TextView
-            android:background="@color/md_deep_purple_A100"
+            android:background="@color/md_black_1000"
             android:textSize="25dp"
-
+            android:textColor="@color/md_white_400"
             android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,19 +85,13 @@ android:textSize="30dp"
 
         />
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView" />
+
+
+
     <!-- Layout for content is here. This can be a RelativeLayout  -->
-    <RelativeLayout
-        android:id="@+id/viewsavedfavs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-      >
-
-        <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentBottom="true"
-        android:text="View Favourite Stocks"/>
-    </RelativeLayout>
 
 </LinearLayout>

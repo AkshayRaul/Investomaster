@@ -64,7 +64,7 @@ public class ShareList extends Fragment {
         String[] categories = getResources().getStringArray(R.array.sharelist);
         int[] imageIcons = {R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite,R.drawable.ic_favorite};
 
-        arrayList = new ArrayList<>();
+        arrayList = new ArrayList<ListObject>();
 
         for (int i = 0; i < categories.length; i++) {
 //            arrayList.add(new ListObject(categories[i],imageIcons[i]));
@@ -108,11 +108,9 @@ public class ShareList extends Fragment {
 
                             String name = c.getString("name");
                             String datasetcode = c.getString("dataset_code");
-                                      // tmp hash map for single stock
                                                         // adding stock to stock list
                             //listview here
-                            arrayList.add(new ListObject(datasetcode
-                            ,R.drawable.ic_favorite));
+                            arrayList.add(new ListObject(datasetcode,R.drawable.ic_favorite));
                         }
                     } catch (final JSONException e) {
                         Log.e(TAG, "Json parsing error: " + e.getMessage());
