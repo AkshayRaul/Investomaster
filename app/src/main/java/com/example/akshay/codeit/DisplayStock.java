@@ -12,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +45,7 @@ import java.util.List;
 public class DisplayStock extends AppCompatActivity {
     String TAG = "Stock";
     String stock;
-
+    LinearLayout linlaHeaderProgress;
 
     @Override
     public void onCreate(Bundle saveInstanceState) {
@@ -52,6 +54,8 @@ public class DisplayStock extends AppCompatActivity {
         setContentView(R.layout.display_stock);
         TextView textView = (TextView) findViewById(R.id.sharenameinfo);
         Toolbar toolbar = (Toolbar) findViewById(R.id.Stocktoolbar);
+        linlaHeaderProgress = (LinearLayout) findViewById(R.id.linlaHeaderProgress);
+
         setSupportActionBar(toolbar);
         stock = getIntent().getExtras().getString("quote");
         textView.setText(stock.toString());
@@ -79,7 +83,7 @@ public class DisplayStock extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Toast.makeText(ShareList.this,"Json Data",Toast.LENGTH_LONG).show();
-
+            linlaHeaderProgress.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -133,6 +137,7 @@ public class DisplayStock extends AppCompatActivity {
             lowtext.setText(low);
             closetext = (TextView) findViewById(R.id.close);
             closetext.setText(close);
+            linlaHeaderProgress.setVisibility(View.GONE);
 
         }
 

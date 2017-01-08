@@ -34,7 +34,7 @@ public class ShareList extends Fragment {
     LinearLayoutManager linearLayoutManager;
     ShareListRecyclerAdapter sharelistRecyclerAdapter;
     RecyclerView recyclerView;
-ImageButton imageButton;
+    ImageButton imageButton;
 
 
 
