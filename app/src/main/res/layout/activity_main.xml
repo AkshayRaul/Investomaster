@@ -26,13 +26,16 @@
             android:layout_alignParentTop="true"
             />
         <ImageView
+
             android:id="@+id/refresh"
             android:adjustViewBounds="true"
             android:layout_width="wrap_content"
             android:src="@drawable/ic_refresh"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+             />
+
 
 </RelativeLayout>
     </android.support.v7.widget.Toolbar>
@@ -45,30 +48,24 @@
         android:focusableInTouchMode="true"/>
 
     <LinearLayout
+        android:background="@color/md_black_1000"
         android:id="@+id/labels"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
         <TextView
+            android:textColor="@color/md_white_1000"
             android:background="@color/md_black_1000"
-            android:textAlignment="center"
-            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Share Name"
             android:textSize="25dp"
-            android:layout_weight="9"
+
             />
 
-        <TextView
-            android:background="@color/md_black_1000"
-            android:textSize="25dp"
-            android:textColor="@color/md_white_400"
-            android:textAlignment="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Favourite"
-            android:layout_weight="1"
-            />
+
     </LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
@@ -77,15 +74,5 @@
 
         />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/viewsavedfavs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="View Favourite Stocks"/>
-    </RelativeLayout>
 </LinearLayout>

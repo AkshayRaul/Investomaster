@@ -6,21 +6,23 @@
     android:padding="@dimen/activity_horizontal_margin"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView
+        android:gravity="center"
         android:textColor="@color/md_black_1000"
         android:id="@+id/sharename"
-        android:layout_weight="9"
+        android:layout_weight="1"
         android:textSize="20dp"
         android:layout_width ="wrap_content"
         android:layout_height="wrap_content"
         android:text="Alkem Labs"
         android:clickable="true"
         />
-    <ImageButton
-
-
-        android:id="@+id/favbutton"
+    <TextView
+        android:textColor="@color/md_black_1000"
+android:text="Click to Know More"
+android:gravity="center"
+        android:id="@+id/clicktoknowmore"
         android:layout_weight="1"
-
+android:textSize="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />

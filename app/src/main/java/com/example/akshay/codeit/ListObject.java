@@ -6,13 +6,13 @@ package com.example.akshay.codeit;
 public class ListObject {
     public String category;
 
-    public int image;
+    public String click;
     public int id;
 
-    public ListObject(String category, int image) {
+    public ListObject(String category, String click) {
         this.category = category;
 
-        this.image = image;
+        this.click = click;
     }
    public String getCategory(){
        return category;

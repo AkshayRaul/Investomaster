@@ -111,7 +111,7 @@ ImageButton imageButton;
                             String datasetcode = c.getString("dataset_code");
                                                         // adding stock to stock list
                             //listview here
-                            arrayList.add(new ListObject(datasetcode,R.drawable.favouriteicon));
+                            arrayList.add(new ListObject(datasetcode,"Click to know more"));
                         }
                     } catch (final JSONException e) {
                         Log.e(TAG, "Json parsing error: " + e.getMessage());
