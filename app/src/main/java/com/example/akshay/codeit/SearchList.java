@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 import com.example.akshay.codeit.MainActivity;
 import org.json.JSONArray;
@@ -67,8 +68,8 @@ public class SearchList extends Fragment {
                     }
                 })
         );
-        EditText search = (EditText) getActivity().findViewById(R.id.search);
-        query=search.getText().toString();
+        SearchView search = (SearchView) getActivity().findViewById(R.id.search);
+        query=search.getQuery().toString();
         new GetStocks().execute();
         return rootView;
     }

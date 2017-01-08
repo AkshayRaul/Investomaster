@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,14 +20,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    EditText search;
+    SearchView search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        search = (EditText) findViewById(R.id.search);
+        search = (SearchView) findViewById(R.id.search);
         toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_action_overflow));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareList()).commit();
@@ -38,22 +39,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        search.addTextChangedListener(new TextWatcher() {
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
+            public boolean onQueryTextSubmit(String query) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchList()).commit();
 
+                return false;
             }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if(newText=="")
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareList()).commit();
+                return false;
+            }
+
         });
 
 
