@@ -20,7 +20,6 @@
         </activity>
         <activity android:name=".DisplayStock">
         </activity>
-        <activity android:name=".Favourite"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
 package com.example.akshay.codeit;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -32,6 +34,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,14 +62,12 @@ public class DisplayStock extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.sharenameinfo);
         Toolbar toolbar = (Toolbar) findViewById(R.id.Stocktoolbar);
         linlaHeaderProgress = (LinearLayout) findViewById(R.id.linlaHeaderProgress);
-        Favourite.Fav = new ArrayList<String>();
         setSupportActionBar(toolbar);
         stock = getIntent().getExtras().getString("quote");
         textView.setText(stock.toString());
         toolbar.setTitle(stock.toString());
          favButton= (ImageButton) findViewById(R.id.favbutton);
-        if(Favourite.Fav.contains(stock))
-            favButton.setVisibility(View.INVISIBLE);
+
         new GetStock().execute();
         WebView webView=(WebView) findViewById(R.id.webv);
         webView.getSettings().setLoadsImagesAutomatically(true);
@@ -80,14 +81,22 @@ public class DisplayStock extends AppCompatActivity {
                 return (event.getAction() == MotionEvent.ACTION_MOVE);
             }
         });
+
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favourite.Fav.add(stock);
+                Favourite.myFavStocks.add(stock);
                 favButton.setVisibility(View.INVISIBLE);
-                Log.d("Fav",Favourite.Fav.toString());
+                Log.d("Fav",Favourite.myFavStocks.toString());
             }
         });
+
+        String dataStr = new Gson().toJson(Favourite.myFavStocks);
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(TAG,dataStr);
+        if(Favourite.myFavStocks.contains(stock))
+            favButton.setVisibility(View.INVISIBLE);
     }
 
     private class GetStock extends AsyncTask<Void, Void, Void> {

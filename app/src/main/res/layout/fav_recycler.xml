@@ -9,8 +9,8 @@
     <TextView
         android:gravity="center"
         android:textColor="@color/md_black_1000"
-        android:id="@+id/sharename"
-        android:layout_weight="1"
+        android:id="@+id/favsharename"
+        android:layout_weight="9"
         android:textSize="20dp"
         android:layout_width ="wrap_content"
         android:layout_height="wrap_content"
@@ -19,11 +19,11 @@
         />
     <TextView
         android:textColor="@color/md_black_1000"
-android:text="Click to Know More"
-android:gravity="center"
-        android:id="@+id/clicktoknowmore"
+        android:text="-"
+        android:gravity="center"
+        android:id="@+id/removeFav"
         android:layout_weight="1"
-android:textSize="10dp"
+        android:textSize="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
