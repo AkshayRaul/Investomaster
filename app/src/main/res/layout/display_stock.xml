@@ -155,4 +155,15 @@
         </TableRow>
 
     </TableLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+        <WebView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/webv"
+            android:scrollbars="none">
+
+        </WebView>
+    </RelativeLayout>
 </LinearLayout>
