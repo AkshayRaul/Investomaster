@@ -43,15 +43,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchList()).commit();
-
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText=="")
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareList()).commit();
-                return false;
+                          return false;
             }
 
         });

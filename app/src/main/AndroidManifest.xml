@@ -6,6 +6,7 @@
 
     <application
         android:allowBackup="true"
+        android:windowSoftInputMode="adjustNothing"
         android:icon="@mipmap/ic_launcher"
         android:label="Investomaster"
         android:supportsRtl="true"
