@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +57,18 @@ public class DisplayStock extends AppCompatActivity {
         textView.setText(stock.toString());
         toolbar.setTitle(stock.toString());
         new GetStock().execute();
+        WebView webView=(WebView) findViewById(R.id.webv);
+        webView.getSettings().setLoadsImagesAutomatically(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.loadUrl("https://www.google.co.in/search?q=NSE:"+stock.toString()+"#fac-ut");
+        webView.setScrollContainer(false);
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setOnTouchListener(new View.OnTouchListener() {
 
+            public boolean onTouch(View v, MotionEvent event) {
+                return (event.getAction() == MotionEvent.ACTION_MOVE);
+            }
+        });
     }
 
     private class GetStock extends AsyncTask<Void, Void, Void> {
