@@ -18,17 +18,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.akshay.codeit.ShareList;
-
 public class MainActivity extends AppCompatActivity {
-
-
+    EditText search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        search = (EditText) findViewById(R.id.search);
         toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_action_overflow));
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareList()).commit();
@@ -40,8 +38,23 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SearchList()).commit();
+
+            }
+        });
 
 
 
