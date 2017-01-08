@@ -15,7 +15,7 @@
                 android:id="@+id/Stocktoolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-android:text="Investomaster"
+                android:text="Investomaster"
                 android:textSize="25dp"
                 android:textColor="@android:color/white"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"

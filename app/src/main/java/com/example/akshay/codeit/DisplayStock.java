@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
@@ -46,6 +49,7 @@ public class DisplayStock extends AppCompatActivity {
     String TAG = "Stock";
     String stock;
     LinearLayout linlaHeaderProgress;
+    ImageButton favButton;
 
     @Override
     public void onCreate(Bundle saveInstanceState) {
@@ -55,11 +59,14 @@ public class DisplayStock extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.sharenameinfo);
         Toolbar toolbar = (Toolbar) findViewById(R.id.Stocktoolbar);
         linlaHeaderProgress = (LinearLayout) findViewById(R.id.linlaHeaderProgress);
-
+        Favourite.Fav = new ArrayList<String>();
         setSupportActionBar(toolbar);
         stock = getIntent().getExtras().getString("quote");
         textView.setText(stock.toString());
         toolbar.setTitle(stock.toString());
+         favButton= (ImageButton) findViewById(R.id.favbutton);
+        if(Favourite.Fav.contains(stock))
+            favButton.setVisibility(View.INVISIBLE);
         new GetStock().execute();
         WebView webView=(WebView) findViewById(R.id.webv);
         webView.getSettings().setLoadsImagesAutomatically(true);
@@ -71,6 +78,14 @@ public class DisplayStock extends AppCompatActivity {
 
             public boolean onTouch(View v, MotionEvent event) {
                 return (event.getAction() == MotionEvent.ACTION_MOVE);
+            }
+        });
+        favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Favourite.Fav.add(stock);
+                favButton.setVisibility(View.INVISIBLE);
+                Log.d("Fav",Favourite.Fav.toString());
             }
         });
     }
@@ -142,5 +157,6 @@ public class DisplayStock extends AppCompatActivity {
         }
 
     }
+
 }
 
