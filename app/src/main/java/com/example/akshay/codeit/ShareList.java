@@ -50,17 +50,15 @@ public class ShareList extends Fragment {
 
         arrayList = new ArrayList<ListObject>();
 
-        for (int i = 0; i < categories.length; i++) {
-            //         arrayList.add(new ListObject(categories[i],imageIcons[i]));
+        for (int i = 0; i < 5; i++) {
+              //       arrayList.add(new ListObject(i+"","click"));
 
         }
-
+        new GetStocks().execute();
         linearLayoutManager = new LinearLayoutManager(getContext());
         sharelistRecyclerAdapter = new ShareListRecyclerAdapter(getContext(), arrayList);
         recyclerView.setAdapter(sharelistRecyclerAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
-
-
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
@@ -76,7 +74,9 @@ public class ShareList extends Fragment {
                 })
         );
 
-        new GetStocks().execute();
+
+
+
         return rootView;
     }
 
@@ -129,6 +129,9 @@ public class ShareList extends Fragment {
             @Override
             protected void onPostExecute(Void result) {
                 super.onPostExecute(result);
+                sharelistRecyclerAdapter.notifyDataSetChanged();
+                Log.d("Sharelist","Loaded");
+
 
             }
         }

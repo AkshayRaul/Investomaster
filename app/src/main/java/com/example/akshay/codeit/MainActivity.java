@@ -27,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        search = (SearchView) findViewById(R.id.search);
         toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_action_overflow));
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareList()).commit();
         ImageView refresh = (ImageView) findViewById(R.id.refresh);
         refresh.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        search = (SearchView) findViewById(R.id.search);
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -56,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
