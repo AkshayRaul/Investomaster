@@ -5,4 +5,9 @@
 
 
     android:title="View Favourites"/>
+    <item
+        android:id="@+id/home"
+
+
+        android:title="Home"/>
 </menu>

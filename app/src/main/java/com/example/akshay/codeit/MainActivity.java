@@ -47,8 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                          return false;
+                if( newText=="")
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareList()).commit();
+                return false;
             }
+
 
         });
 
@@ -71,8 +74,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.favslist:
-                Intent i = new Intent(getApplicationContext(), Favourite.class);
-                startActivity(i);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Favourite()).commit();
+                return true;
+            case R.id.home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShareList()).commit();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

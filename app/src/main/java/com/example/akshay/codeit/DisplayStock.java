@@ -50,6 +50,7 @@ import java.util.List;
  */
 public class DisplayStock extends AppCompatActivity {
     String TAG = "Stock";
+    String putTag="SharedP";
     String stock;
     LinearLayout linlaHeaderProgress;
     ImageButton favButton;
@@ -67,7 +68,6 @@ public class DisplayStock extends AppCompatActivity {
         textView.setText(stock.toString());
         toolbar.setTitle(stock.toString());
          favButton= (ImageButton) findViewById(R.id.favbutton);
-
         new GetStock().execute();
         WebView webView=(WebView) findViewById(R.id.webv);
         webView.getSettings().setLoadsImagesAutomatically(true);
@@ -85,18 +85,19 @@ public class DisplayStock extends AppCompatActivity {
         favButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Favourite.myFavStocks.add(stock);
+                SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor = sharedPrefs.edit();
+                Gson gson = new Gson();
+                ArrayList<String> arrayList = new ArrayList<String>();
+                arrayList.add(stock);
+                String json = gson.toJson(arrayList);
+                editor.putString(putTag, json);
+                editor.commit();
                 favButton.setVisibility(View.INVISIBLE);
-                Log.d("Fav",Favourite.myFavStocks.toString());
+                Log.d("Fav",arrayList.toString());
             }
         });
 
-        String dataStr = new Gson().toJson(Favourite.myFavStocks);
-        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(TAG,dataStr);
-        if(Favourite.myFavStocks.contains(stock))
-            favButton.setVisibility(View.INVISIBLE);
     }
 
     private class GetStock extends AsyncTask<Void, Void, Void> {
