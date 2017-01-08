@@ -10,4 +10,9 @@
 
 
         android:title="Home"/>
+    <item
+        android:id="@+id/options"
+
+
+        android:title="Options"/>
 </menu>
