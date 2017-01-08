@@ -35,12 +35,14 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,10 +90,12 @@ public class DisplayStock extends AppCompatActivity {
                 SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor = sharedPrefs.edit();
                 Gson gson = new Gson();
-                ArrayList<String> arrayList = new ArrayList<String>();
+                String json = sharedPrefs.getString(putTag, null);
+                Type type = new TypeToken<ArrayList<String>>() {}.getType();
+                ArrayList<String> arrayList = gson.fromJson(json, type);
                 arrayList.add(stock);
-                String json = gson.toJson(arrayList);
-                editor.putString(putTag, json);
+                String jsonnew = gson.toJson(arrayList);
+                editor.putString(putTag, jsonnew);
                 editor.commit();
                 favButton.setVisibility(View.INVISIBLE);
                 Log.d("Fav",arrayList.toString());
